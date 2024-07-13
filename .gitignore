@@ -1,2 +1,13 @@
 node_modules
 .env
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    const timestamp = Math.floor(Date.now() / 1000); // 获取以秒为单位的时间戳
+    res.end(timestamp.toString()); // 返回时间戳
+});
+
+server.listen(3000, () => {
+    console.log('时间戳微服务正在监听3000端口');
+});
